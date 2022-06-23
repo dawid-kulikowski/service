@@ -1,6 +1,8 @@
-package com.crud.service;
+package com.crud.service.Models;
 
 import lombok.*;
+
+import javax.persistence.*;
 
 
 @AllArgsConstructor
@@ -9,12 +11,19 @@ import lombok.*;
 @Setter
 @Builder
 
+@Entity
 public class Client {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String name;
-    private String surname;
-    private String phoneNumber;
-    private String email;
 
+    @Column
+    private String name;
+    @Column
+    private String surname;
+    @Column
+    private String phoneNumber;
+    @Column
+    private String email;
 
 }
