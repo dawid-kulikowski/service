@@ -2,9 +2,9 @@ package com.crud.service.Controller;
 
 
 import com.crud.service.Models.Client;
-//import com.crud.service.Models.Order;
+import com.crud.service.Models.Order;
 import com.crud.service.Repo.ClientRepo;
-//import com.crud.service.Repo.OrderRepo;
+import com.crud.service.Repo.OrderRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +16,8 @@ public class ServiceController {
 
     @Autowired
     private ClientRepo clientRepo;
-//    @Autowired
-//    private OrderRepo orderRepo;
+    @Autowired
+    private OrderRepo orderRepo;
 
     // Client
     @GetMapping(value = "/")
@@ -57,33 +57,33 @@ public class ServiceController {
 
 
     // Order
-//    @GetMapping(value = "/orders")
-//    public List<Order> getOrder() {
-//        return orderRepo.findAll();
-//    }
-//
-//    @PostMapping(value = "/order/add")
-//    public String saveOrder(@RequestBody Order order) {
-//        orderRepo.save(order);
-//        return "Order saved.";
-//    }
-//
-//    @PutMapping(value = "/order/update/{id}")
-//    public String updateOrder(@PathVariable long id, @RequestBody Order order) {
-//        Order updatedOrder = orderRepo.findById(id).get();
-//        updatedOrder.setDeviceType(order.getDeviceType());
-//        updatedOrder.setDeviceModel(order.getDeviceModel());
-//        updatedOrder.setRepairInfo(order.getRepairInfo());
-//        updatedOrder.setEstimatedPrice(order.getEstimatedPrice());
-//        updatedOrder.setRepairStatus(order.getRepairStatus());
-//        return "Order updated.";
-//    }
-//
-//    @DeleteMapping(value = "/order/delete/{id}")
-//    public String deleteOrder(@PathVariable long id) {
-//        Order deleteOrder = orderRepo.findById(id).get();
-//        orderRepo.delete(deleteOrder);
-//        return "Deleted order with id:" + id;
-//    }
+    @GetMapping(value = "/orders")
+    public List<Order> getOrder() {
+        return orderRepo.findAll();
+    }
+
+    @PostMapping(value = "/order/add")
+    public String saveOrder(@RequestBody Order order) {
+        orderRepo.save(order);
+        return "Order saved.";
+    }
+
+    @PutMapping(value = "/order/update/{id}")
+    public String updateOrder(@PathVariable long id, @RequestBody Order order) {
+        Order updatedOrder = orderRepo.findById(id).get();
+        updatedOrder.setDeviceType(order.getDeviceType());
+        updatedOrder.setDeviceModel(order.getDeviceModel());
+        updatedOrder.setRepairInfo(order.getRepairInfo());
+        updatedOrder.setEstimatedPrice(order.getEstimatedPrice());
+        updatedOrder.setRepairStatus(order.getRepairStatus());
+        return "Order updated.";
+    }
+
+    @DeleteMapping(value = "/order/delete/{id}")
+    public String deleteOrder(@PathVariable long id) {
+        Order deleteOrder = orderRepo.findById(id).get();
+        orderRepo.delete(deleteOrder);
+        return "Deleted order with id:" + id;
+    }
 }
 
